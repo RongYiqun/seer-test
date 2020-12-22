@@ -12,18 +12,18 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   media: {
-    margin: "10px",
     paddingTop: "56.25%", // 16:9
   },
   root: {
     height: "100%",
+    background: "transparent",
   },
   header: {
     textAlign: "center",
   },
   readMore: {
     textAlign: "center",
-    marginBottom: "0px",
+    marginBottom: theme.spacing(0),
   },
 }));
 
@@ -62,7 +62,7 @@ export default function BlogInfo({ blogInfo }) {
       />
       <CardMedia className={classes.media} image={blogInfo.banner} />
       <CardContent>
-        <Typography variant="body1" color="textPrimary" component="p">
+        <Typography variant="body1" color="textPrimary">
           {blogInfo.description}
         </Typography>
         <Typography variant="subtitle1" className={classes.readMore}>
