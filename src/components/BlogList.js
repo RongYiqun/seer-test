@@ -28,7 +28,6 @@ export default function BlogList() {
   }, []);
 
   if (blogs) {
-    console.log(blogs);
     return (
       <div className={classes.root}>
         <Grid container spacing={2}>
