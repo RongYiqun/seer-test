@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 import { getBlogById } from "../api";
-import { Typography, Container, Box, CssBaseline } from "@material-ui/core";
+import {
+  Typography,
+  Container,
+  Box,
+  CssBaseline,
+  Divider,
+} from "@material-ui/core";
 import RelatedBlog from "./RelatedBlog";
+import AuthorInfo from "./AuthorInfo";
 import { makeStyles } from "@material-ui/core/styles";
 import "./Blog.css";
 import { Loading } from "../utility.js";
+import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -35,12 +43,12 @@ export default function Blog({ blogId }) {
   }, [blogId]);
 
   if (blog) {
-    const createdDate = blog.created_at.split("T")[0];
+    const createdDate = moment(blog.created_at).format("MMMM Do YYYY");
     return (
       <>
         <CssBaseline />
         <Container maxWidth="md" className={classes.container}>
-          <Typography variant="subtitle2" className={classes.date}>
+          <Typography variant="subtitle1" className={classes.date}>
             <Box fontStyle="italic">{`Posted on ${createdDate}`}</Box>
           </Typography>
           <Typography variant="h4" className={classes.title}>
@@ -50,6 +58,10 @@ export default function Blog({ blogId }) {
             className="sc-iQKALj ibWcNt"
             dangerouslySetInnerHTML={{ __html: blog.body }}
           ></div>
+          <Divider />
+          {blog.author_first_name && blog.author_last_name && (
+            <AuthorInfo blog={blog} />
+          )}
         </Container>
         <RelatedBlog blog={blog} />
       </>

@@ -2,14 +2,7 @@ import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import { WhiteTypography } from "../utility.js";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  Icon,
-  Button,
-} from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Icon, Button } from "@material-ui/core";
 import { navigate } from "@reach/router";
 
 const useStyles = makeStyles((theme) => ({
@@ -30,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
+  button: {
+    textTransform: "none",
+  },
 }));
 
 export default function Header() {
@@ -38,7 +34,7 @@ export default function Header() {
   return (
     <>
       <CssBaseline />
-      <AppBar position="static" className={classes.root}>
+      <AppBar position="sticky" className={classes.root}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -53,7 +49,7 @@ export default function Header() {
               <img className={classes.imageIcon} src="/assets/seerLogo.svg" />
             </Icon>
           </IconButton>
-          <Button>
+          <Button className={classes.button}>
             <WhiteTypography
               variant="h6"
               noWrap
