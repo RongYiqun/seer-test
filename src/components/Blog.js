@@ -11,7 +11,7 @@ import RelatedBlog from "./RelatedBlog";
 import AuthorInfo from "./AuthorInfo";
 import { makeStyles } from "@material-ui/core/styles";
 import "./Blog.css";
-import { Loading, ErrorMessage } from "../utility.js";
+import { Loading, ErrorMessage } from "../utility/index.js";
 import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import BlogInfo from "../components/BlogInfo";
 import { getAllBlogs } from "../api";
 import { CssBaseline } from "@material-ui/core";
-import { Loading, ErrorMessage } from "../utility.js";
+import { Loading, ErrorMessage } from "../utility/index.js";
 
 const useStyles = makeStyles((theme) => ({
   root: {

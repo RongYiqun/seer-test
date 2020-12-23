@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { navigate } from "@reach/router";
+import { toTop } from "../utility/index.js";
 import {
   Card,
   CardHeader,
@@ -28,8 +29,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function BlogInfo({ blogInfo }) {
-  const classes = useStyles();
+  useEffect(toTop, []);
 
+  const classes = useStyles();
   const [isRaised, setIsRaised] = useState(false);
   const navigateToBlog = () => {
     navigate(`./${blogInfo.id}`);

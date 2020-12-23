@@ -1,6 +1,6 @@
 import { CssBaseline, Icon, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { WhiteTypography, WhiteDivider } from "../utility.js";
+import { WhiteTypography, WhiteDivider } from "../utility/index.js";
 const useStyles = makeStyles((theme) => ({
   imageIcon: {
     display: "flex",
