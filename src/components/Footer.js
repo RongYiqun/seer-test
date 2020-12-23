@@ -27,22 +27,26 @@ export default function Footer() {
       <CssBaseline />
       <div className={classes.root}>
         <Icon classes={{ root: classes.imageIcon }}>
-          <img className={classes.imageIcon} src="/assets/seerLogoLarge.svg" />
+          <img
+            className={classes.imageIcon}
+            alt="seerLogoLarge"
+            src="/assets/seerLogoLarge.svg"
+          />
         </Icon>
         <WhiteDivider className={classes.divider} />
-        <WhiteTypography>
+        <WhiteTypography component="span">
           <Box fontWeight="fontWeightBold">Company</Box>
         </WhiteTypography>
         <a href="https://seerdata.com.au/about">
-          <WhiteTypography>About us</WhiteTypography>
+          <WhiteTypography component="span">About us</WhiteTypography>
         </a>
         <a href="https://seerdata.com.au/privacy-policy">
-          <WhiteTypography>Privacy policy</WhiteTypography>
+          <WhiteTypography component="span">Privacy policy</WhiteTypography>
         </a>
         <a href="https://seerdata.com.au/terms-of-service">
-          <WhiteTypography>Terms of service</WhiteTypography>
+          <WhiteTypography component="span">Terms of service</WhiteTypography>
         </a>
-        <WhiteTypography align="right">
+        <WhiteTypography component="span" align="right">
           © Seer Data &amp; Analytics 2020
         </WhiteTypography>
       </div>

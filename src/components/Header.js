@@ -46,11 +46,16 @@ export default function Header() {
             }}
           >
             <Icon classes={{ root: classes.imageIcon }}>
-              <img className={classes.imageIcon} src="/assets/seerLogo.svg" />
+              <img
+                className={classes.imageIcon}
+                alt="seerLogo"
+                src="/assets/seerLogo.svg"
+              />
             </Icon>
           </IconButton>
           <Button className={classes.button}>
             <WhiteTypography
+              component="span"
               variant="h6"
               noWrap
               className={classes.title}
