@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BlogInfo({ blogInfo }) {
   const classes = useStyles();
-  const createdDate = blogInfo.created_at.split("T")[0];
+
   const [isRaised, setIsRaised] = useState(false);
   const navigateToBlog = () => {
     navigate(`./${blogInfo.id}`);
@@ -53,12 +53,9 @@ export default function BlogInfo({ blogInfo }) {
         className={classes.header}
         title={
           <Typography variant="h6">
-            <Box fontWeight="fontWeightBold" m={1}>
-              {blogInfo.title}
-            </Box>
+            <Box fontWeight="fontWeightBold">{blogInfo.title}</Box>
           </Typography>
         }
-        subheader={createdDate}
       />
       <CardMedia className={classes.media} image={blogInfo.banner} />
       <CardContent>
@@ -66,9 +63,7 @@ export default function BlogInfo({ blogInfo }) {
           {blogInfo.description}
         </Typography>
         <Typography variant="subtitle1" className={classes.readMore}>
-          <Box fontWeight="fontWeightBold" m={1}>
-            Read More
-          </Box>
+          <Box fontWeight="fontWeightBold">Read More</Box>
         </Typography>
       </CardContent>
     </Card>
