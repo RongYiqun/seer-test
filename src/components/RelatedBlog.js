@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllBlogs } from "../api";
 import { compareTwoStrings } from "string-similarity";
 import BlogInfo from "./BlogInfo";
-import { Loading, ErrorMessage, toTop } from "../utility/index.js";
+import { Loading, ErrorMessage } from "../utility/index.js";
 import { Grid, Typography, Box, CssBaseline } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
