@@ -1,5 +1,11 @@
-import { withStyles, createMuiTheme } from "@material-ui/core/styles";
-import { Typography, Divider, CircularProgress } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+import {
+  Typography,
+  Divider,
+  CircularProgress,
+  Container,
+} from "@material-ui/core";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 export const WhiteDivider = withStyles({
   root: {
@@ -24,5 +30,16 @@ export function Loading() {
     >
       <CircularProgress color="inherit" />
     </div>
+  );
+}
+
+export function ErrorMessage({ error }) {
+  return (
+    <Container maxWidth="xs">
+      <Alert severity="error">
+        <AlertTitle>Sorry, there is an error while loading</AlertTitle>
+        {error.message}
+      </Alert>
+    </Container>
   );
 }

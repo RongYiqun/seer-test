@@ -11,7 +11,7 @@ import RelatedBlog from "./RelatedBlog";
 import AuthorInfo from "./AuthorInfo";
 import { makeStyles } from "@material-ui/core/styles";
 import "./Blog.css";
-import { Loading } from "../utility.js";
+import { Loading, ErrorMessage } from "../utility.js";
 import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
@@ -34,10 +34,16 @@ const useStyles = makeStyles((theme) => ({
 export default function Blog({ blogId }) {
   const classes = useStyles();
   const [blog, setBlog] = useState();
+  const [error, setError] = useState();
+
   useEffect(() => {
     const fetchBlog = async () => {
-      const currentBlog = await getBlogById(blogId);
-      setBlog(currentBlog);
+      try {
+        const currentBlog = await getBlogById(blogId);
+        setBlog(currentBlog);
+      } catch (e) {
+        setError(e);
+      }
     };
     fetchBlog();
   }, [blogId]);
@@ -58,6 +64,7 @@ export default function Blog({ blogId }) {
             className="sc-iQKALj ibWcNt"
             dangerouslySetInnerHTML={{ __html: blog.body }}
           ></div>
+          {/* embed html, attach class name according to original css */}
           <Divider />
           {blog.author_first_name && blog.author_last_name && (
             <AuthorInfo blog={blog} />
@@ -66,6 +73,8 @@ export default function Blog({ blogId }) {
         <RelatedBlog blog={blog} />
       </>
     );
+  } else if (error) {
+    return <ErrorMessage error={error} />;
   } else {
     return <Loading />;
   }

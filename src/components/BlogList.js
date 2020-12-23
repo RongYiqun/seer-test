@@ -1,11 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
+import { Grid } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import BlogInfo from "../components/BlogInfo";
 import { getAllBlogs } from "../api";
 import { CssBaseline } from "@material-ui/core";
-import { Loading } from "../utility.js";
+import { Loading, ErrorMessage } from "../utility.js";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,10 +22,16 @@ const useStyles = makeStyles((theme) => ({
 export default function BlogList() {
   const classes = useStyles();
   const [blogs, setBlogs] = useState();
+  const [error, setError] = useState();
   useEffect(() => {
     const fetchAllBlogs = async () => {
-      const allBlogs = await getAllBlogs();
-      setBlogs(allBlogs);
+      try {
+        const allBlogs = await getAllBlogs();
+        setBlogs(allBlogs);
+      } catch (e) {
+        setError(e);
+        console.log(e);
+      }
     };
     fetchAllBlogs();
   }, []);
@@ -45,6 +51,8 @@ export default function BlogList() {
         </div>
       </>
     );
+  } else if (error) {
+    return <ErrorMessage error={error} />;
   } else {
     return <Loading />;
   }
